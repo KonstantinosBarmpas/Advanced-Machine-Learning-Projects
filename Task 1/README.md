@@ -1,0 +1,10 @@
+# Task1
+
+## Task1 - Description
+
+"This task is primarily concerned with regression. However, we have perturbed the original MRI features in several ways. You will need to perform outlier detection, feature selection, and other preprocessing to achieve the best result."
+
+## Task1 - Solution
+
+The task1 was to predict a person's age from the brain image data: a standard regression problem. The original dataset included 832 features as well as a lot of NaN values and a few outliers. A good preprocessing stage was necessary in order to have a well defined dataset that could be used in our regression model. First step was the imputation of the dataset. Filling each NaN value with the median of each feature column. The use of the median instead of other value (e.g. mean) is justified since a lot of outliers are included in the dataset. (e.g. 1 2 _ 5 20 median: 3 mean: 7). Next step was the feature extraction. By using the "autofeat" library (paper: https://arxiv.org/pdf/1901.07329.pdf), we extracted the 21 most important features. The way the algorithm works is going through a loop of correlation of features with target, select promising features, train Lasso regression model with promising features, filter the good features keeping the ones with non-zero regression weights. We updated the datasets by keeping only the 21 most important features. Finally, we used these updated datasets for the training of our final regression model. A lot of outlier detection techniques were used but we decided to keep the outliers and use a tree-based method for our final model. Tree-methods have been proved to be robust to outliers and we avoid risking excluded important features / points from the dataset. The "ExtraTreesRegressor" model from the "sklearn" package was used and fine tuned based on the R2 score performance in our validation set. The final model had a score >0.6 in the validation sets using cross-validation and in the submission leaderboard  scored 0.6812 while the hard baseline was set to 0.65 by the Task1 team.
+
