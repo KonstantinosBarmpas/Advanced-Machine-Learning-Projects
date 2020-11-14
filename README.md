@@ -16,6 +16,6 @@ This repo outlines our submissions for the four tasks of the course "Advanced Ma
 
 This repo contains mainly Jupyter notebook files which can be run after installing Jupyter Notebook. Run the following command at the Terminal (Mac/Linux) or Command Prompt (Windows):
 
-`pip install jupyterlab`
+`pip install notebook`
 
 ---
